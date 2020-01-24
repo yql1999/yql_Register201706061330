@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+"-//Apache Struts//XWork Validator 1.0.2//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<!-- "-//OpenSymphony Group//XWork Validator 1.0.2//EN" -->
+
+<validators>
+
+	<field name="username">
+		<field-validator type="stringlength">
+			<param name="minLength">5</param>
+			<param name="maxLength">12</param>
+			<message>用户名长度必须在 ${minLength}~${maxLength}位之间</message>
+		</field-validator>
+		<field-validator type="requiredstring">
+			<message>用户名不能为空，且包含数字和字符</message>
+		</field-validator>
+	</field>
+
+	<field name="password">
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">100</param>
+			<message>密码长度不得少于 ${minLength}位</message>
+		</field-validator>
+		<field-validator type="requiredstring">
+			<message>密码不能为空</message>
+		</field-validator>
+	</field>
+
+	<field name="repassword">
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">100</param>
+			<message>确认密码长度不得少于 ${minLength}位</message>
+		</field-validator>
+		<field-validator type="requiredstring">
+			<message>确认密码不能为空</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">password==repassword</param>
+			<message>确认密码和密码输入不一致</message>
+		</field-validator>
+	</field>
+
+	<field name="age">
+		<field-validator type="required">
+			<message>请输入年齡</message>
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">18</param>
+			<param name="max">100</param>
+			<message>年齡且必须在 ${min}~${max}岁之间</message>
+		</field-validator>
+	</field>
+
+	<field name="email">
+		<field-validator type="required">
+			<message>邮件地址不能为空</message>
+		</field-validator>
+		<field-validator type="email">
+			<message>请输入正确的电子邮件格式</message>
+		</field-validator>
+	</field>
+
+	<field name="phone">
+		<field-validator type="requiredstring">
+			<message>手机号码不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">11</param>
+			<message>请输入正确的手机号码</message>
+		</field-validator>
+	</field>
+
+
+</validators>
